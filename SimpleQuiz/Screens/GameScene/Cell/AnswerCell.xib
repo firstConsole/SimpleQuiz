@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="71" id="KGk-i7-Jjw" customClass="AnswerCell" customModule="SimpleQuiz" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="smx-75-9TO">
+                        <rect key="frame" x="10" y="10" width="300" height="51"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXo-L2-HFp">
+                                <rect key="frame" x="20" y="9" width="260" height="33.5"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="20"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                        <constraints>
+                            <constraint firstItem="aXo-L2-HFp" firstAttribute="leading" secondItem="smx-75-9TO" secondAttribute="leading" constant="20" id="4C5-HA-cGj"/>
+                            <constraint firstAttribute="trailing" secondItem="aXo-L2-HFp" secondAttribute="trailing" constant="20" id="6BZ-aI-jDl"/>
+                            <constraint firstItem="aXo-L2-HFp" firstAttribute="top" secondItem="smx-75-9TO" secondAttribute="top" constant="9" id="UCe-A8-m38"/>
+                            <constraint firstAttribute="bottom" secondItem="aXo-L2-HFp" secondAttribute="bottom" constant="8.5" id="kp4-kj-d3a"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="smx-75-9TO" secondAttribute="bottom" constant="10" id="14a-cc-oXR"/>
+                    <constraint firstItem="smx-75-9TO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="7yR-e5-QUi"/>
+                    <constraint firstAttribute="trailing" secondItem="smx-75-9TO" secondAttribute="trailing" constant="10" id="bMg-SM-ve4"/>
+                    <constraint firstItem="smx-75-9TO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="knn-3Z-b9p"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="answerContainerView" destination="smx-75-9TO" id="1ed-rj-0W1"/>
+                <outlet property="answerLabel" destination="aXo-L2-HFp" id="Trs-tq-AJ4"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="122.87946428571428"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
