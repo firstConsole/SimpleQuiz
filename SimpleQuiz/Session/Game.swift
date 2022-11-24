@@ -9,7 +9,6 @@ import Foundation
 
 struct Records {
     let score: Int
-//    let playerName: String?
 }
 
 final class Game {
