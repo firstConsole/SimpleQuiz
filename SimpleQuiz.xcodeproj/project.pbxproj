@@ -26,7 +26,6 @@
 		BBCA4F7928E090EC00DE4CB2 /* GameScene + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA4F7828E090EC00DE4CB2 /* GameScene + DataSource.swift */; };
 		BBCA4F7D28E091F900DE4CB2 /* AnswerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA4F7B28E091F900DE4CB2 /* AnswerCell.swift */; };
 		BBCA4F7E28E091F900DE4CB2 /* AnswerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBCA4F7C28E091F900DE4CB2 /* AnswerCell.xib */; };
-		BBCA4F8128E97F2900DE4CB2 /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA4F8028E97F2900DE4CB2 /* GameSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +50,6 @@
 		BBCA4F7828E090EC00DE4CB2 /* GameScene + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene + DataSource.swift"; sourceTree = "<group>"; };
 		BBCA4F7B28E091F900DE4CB2 /* AnswerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCell.swift; sourceTree = "<group>"; };
 		BBCA4F7C28E091F900DE4CB2 /* AnswerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnswerCell.xib; sourceTree = "<group>"; };
-		BBCA4F8028E97F2900DE4CB2 /* GameSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,7 +174,6 @@
 			isa = PBXGroup;
 			children = (
 				BB78A06A28F9B7F000C80655 /* Game.swift */,
-				BBCA4F8028E97F2900DE4CB2 /* GameSession.swift */,
 			);
 			path = Session;
 			sourceTree = "<group>";
@@ -254,7 +251,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBCA4F8128E97F2900DE4CB2 /* GameSession.swift in Sources */,
 				BBCA4F7928E090EC00DE4CB2 /* GameScene + DataSource.swift in Sources */,
 				BBCA4F6F28E0490F00DE4CB2 /* GameScene.swift in Sources */,
 				BB78A06B28F9B7F000C80655 /* Game.swift in Sources */,
