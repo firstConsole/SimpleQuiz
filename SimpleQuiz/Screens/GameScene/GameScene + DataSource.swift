@@ -47,23 +47,33 @@ extension GameScene: UITableViewDataSource {
                     DispatchQueue.main.async {
                         self.questionNumberLabel.text = "\(questionNumber + 1)"
                         print(questionNumber)
-                        self.result = questionNumber
+                        guard let playerName = Game.shared.playerName else {
+                            return
+                        }
+                        print(playerName)
+                        self.result = Records(score: questionNumber, playerName: playerName)
                         self.tableView.reloadData()
                     }
+                    
                 } else {
                     let alert = UIAlertController(title: "Вы выиграли!",
                                                   message: "ПОЗДРАВЛЯЕМ!",
                                                   preferredStyle: .alert)
+                    
                     let action = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
                         guard let self = self,
                               let result = self.result else {
                             return
                         }
                         
-                        Game.shared.addRecord(with: Records(score: result))
+                        Game.shared.addRecord(with: result)
                         
                         self.welcomeScreenDelegate?.didEndGame(with: result)
+                        
+                        self.dismiss(animated: true)
+                        
                     }
+                    
                     alert.addAction(action)
                     present(alert, animated: true)
                 }
@@ -77,13 +87,17 @@ extension GameScene: UITableViewDataSource {
                     return
                 }
                 
-                Game.shared.addRecord(with: Records(score: result))
+                Game.shared.addRecord(with: result)
                 
                 self.welcomeScreenDelegate?.didEndGame(with: result)
                 
+                self.dismiss(animated: true)
+                
             }
+            
             alert.addAction(action)
             present(alert, animated: true)
+            
         }
     }
 }

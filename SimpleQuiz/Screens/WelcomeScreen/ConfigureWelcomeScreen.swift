@@ -28,13 +28,11 @@ extension WelcomeScreen {
 }
 
 extension WelcomeScreen: WelcomeScreenDelegate {
-    func didEndGame(with result: Int) {
-        
+    func didEndGame(with result: Records) {
         DispatchQueue.main.async {
-            self.lastResultLabel.text = "Последний результат: \(result)"
+            self.lastResultLabel.text = "Последний результат: \(result.score)"
         }
         dismiss(animated: true)
     }
 }
-
 

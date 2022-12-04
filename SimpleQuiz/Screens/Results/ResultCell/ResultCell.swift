@@ -13,9 +13,4 @@ final class ResultCell: UITableViewCell {
     
     @IBOutlet weak var playerNameLabel: UILabel!
     @IBOutlet weak var answersNumberLabel: UILabel!
-    
-    func configureCell(player: Records, answers: Records) {
-        
-    }
-    
 }

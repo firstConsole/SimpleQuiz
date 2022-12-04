@@ -14,8 +14,23 @@ final class GameScene: UIViewController {
     var questions: [Question] = []
     var currentQuestion: Question?
     var questionNumber: Int = 1
-    var result: Int?
+    var result: Records?
     weak var welcomeScreenDelegate: WelcomeScreenDelegate?
+    var player: String = ""
+    var difficultyLevel: DifficultyLevel = .normal
+    
+    // MARK: - Private properties
+    
+    private var questionStrategy: QuestionsStrategy {
+        switch difficultyLevel {
+        case .easy:
+            return QuestionsEasy()
+        case .normal:
+            return QuestionsNormal()
+        case .hard:
+            return QuestionsHard()
+        }
+    }
     
 // MARK: - Outlets
     
@@ -31,7 +46,7 @@ final class GameScene: UIViewController {
     @IBOutlet weak var gameInfoContainerView: UIView!
     @IBOutlet weak var questionNumberLabel: UILabel!
     
-// MARK: - viewDidLoad
+    // MARK: - viewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
