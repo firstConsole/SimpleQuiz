@@ -8,5 +8,5 @@
 import Foundation
 
 protocol WelcomeScreenDelegate: AnyObject {
-    func didEndGame(with result: Int)
+    func didEndGame(with result: Records)
 }

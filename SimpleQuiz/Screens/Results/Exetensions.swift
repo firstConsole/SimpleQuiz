@@ -26,8 +26,19 @@ extension Results: UITableViewDataSource {
             return UITableViewCell()
         }
         
+        let result = Game.shared.records[indexPath.row]
+        
+        cell.playerNameLabel.text = "Игрок: \(result.playerName)"
+        cell.answersNumberLabel.text = "Ответы: \(String(result.score))"
+        
         return cell
     }
-    
-    
+}
+
+extension Results {
+    func registerCells() {
+        tableView.register(UINib(nibName: "ResultCell",
+                                 bundle: nil),
+                           forCellReuseIdentifier: ResultCell.identifier)
+    }
 }

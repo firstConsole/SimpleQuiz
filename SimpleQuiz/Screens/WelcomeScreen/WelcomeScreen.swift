@@ -7,15 +7,35 @@
 
 import UIKit
 
+// MARK: - Welcome Screen Class
+
 final class WelcomeScreen: UIViewController {
     
-// MARK: - IBOutlets
+    var playerName: String = ""
+    
+    // MARK: - IBOutlets
     
     @IBOutlet weak var startNewGameButton: UIButton!
     @IBOutlet weak var showResultsButton: UIButton!
     @IBOutlet weak var lastResultLabel: UILabel!
+    @IBOutlet weak var segmentControll: UISegmentedControl!
     
-// MARK: - Prepare for segue
+    // MARK: - Private properties
+    
+    private var selectedDifficultyLevel: DifficultyLevel {
+        switch segmentControll.selectedSegmentIndex {
+        case 0:
+            return .easy
+        case 1:
+            return .normal
+        case 2:
+            return .hard
+        default:
+            return .normal
+        }
+    }
+    
+    // MARK: - Prepare for segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
@@ -23,13 +43,45 @@ final class WelcomeScreen: UIViewController {
             guard let destionation = segue.destination as? GameScene else {
                 return
             }
+            
             destionation.welcomeScreenDelegate = self
+            destionation.difficultyLevel = selectedDifficultyLevel
+            
+            let alert = UIAlertController(title: "Новая игра",
+                                          message: "Введите ваше имя или никнейм",
+                                          preferredStyle: .alert)
+            
+            alert.addTextField { field in
+                field.placeholder = "Введите текст..."
+                field.returnKeyType = .continue
+                field.keyboardType = .emailAddress
+            }
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                guard let fields = alert.textFields else {
+                    return
+                }
+                
+                let playerNameField = fields[0]
+                
+                guard let playerName = playerNameField.text else {
+                    return
+                }
+                
+                Game.shared.playerName = playerName
+                
+                self.present(destionation, animated: true)
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: .destructive))
+            
+            present(alert, animated: true)
         default:
             break
         }
     }
     
-// MARK: - ViewDidLoad
+    // MARK: - ViewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,30 +89,24 @@ final class WelcomeScreen: UIViewController {
         configureUI()
     }
     
-// MARK: UIButtons actions
-
+    // MARK: UIButtons actions
+    
     @IBAction func showResults(_ sender: UIButton) {
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "Results") as? Results else {
+        
+        guard let results = storyboard?.instantiateViewController(withIdentifier: "Results") as? Results else {
             return
         }
-
+        
         navigationItem.backButtonTitle = "Назад"
-        navigationController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(results, animated: true)
     }
     
-    @IBAction func startGameButton(_ sender: UIButton) {
+    @IBAction func settingGame(_ sender: UIButton) {
+        guard let settings = storyboard?.instantiateViewController(withIdentifier: "Settings") as? Settings else {
+            return
+        }
         
-        let alert = UIAlertController(title: "Новая игра",
-                                      message: "Введите ваше имя",
-                                      preferredStyle: .alert)
-        let actionAccept = UIAlertAction(title: "OK", style: .default)
-        let actionDistruct = UIAlertAction(title: "Выйти", style: .destructive)
-        
-        alert.addTextField()
-        alert.addAction(actionAccept)
-        alert.addAction(actionDistruct)
-        
-        
-        present(alert, animated: true)
+        navigationItem.backButtonTitle = "Назад"
+        navigationController?.pushViewController(settings, animated: true)
     }
 }

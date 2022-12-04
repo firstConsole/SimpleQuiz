@@ -7,16 +7,27 @@
 
 import Foundation
 
-struct Records {
+struct Records: Codable {
     let score: Int
+    let playerName: String
 }
 
 final class Game {
     static let shared = Game()
     
-    private(set) var records: [Records] = []
+    private let recordsCareTaker = RecoedsCareTaker()
     
-    private init() {}
+    private(set) var records: [Records] {
+        didSet {
+            recordsCareTaker.saveRecords(records: records)
+        }
+    }
+    
+    var playerName: String?
+    
+    private init() {
+        records = recordsCareTaker.loadRecords()
+    }
     
     func addRecord(with record: Records) {
         records.append(record)

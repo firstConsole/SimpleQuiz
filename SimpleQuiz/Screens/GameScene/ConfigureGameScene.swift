@@ -85,6 +85,7 @@ extension GameScene {
             self.currentQuestion = question
             self.questionTextLabel.text = question.text
             self.questionNumberLabel.text = "\(self.questionNumber)"
+            self.tableView.reloadData()
         }
     }
 }
